@@ -1,6 +1,14 @@
 #include "main.h"
 
-int main()
+/**
+ * main - Entry point.
+ *
+ * Return: 0 always.
+ */
+
+int main(void)
 {
+	printf("Hello \n world!\n");
+
 	return (0);
 }
