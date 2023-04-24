@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <sys/stat.h>
 #include "main.h"
 
@@ -15,6 +16,8 @@ int runprog(char *path, char **arg)
 	int status;
 	char *envp[] = {NULL};
 	char *temp_path;
+
+	char *val;
 
 	struct stat bf;
 
