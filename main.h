@@ -7,6 +7,6 @@
 
 int handleCommand(char *cmd);
 char **_strtok(char *command, size_t *count);
-int runprog(char *path, char **arg);
+int runprog(char *path);
 
 #endif
