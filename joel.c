@@ -15,6 +15,9 @@ int main(__attribute((unused))int argc, char **argv)
 	ssize_t wp;
 
 	n = 0;
+	
+	signal(SIGINT, SIG_IGN);
+	signal(SIGINT, handle_signal);
 
 	while (1)
 	{
