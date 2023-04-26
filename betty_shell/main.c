@@ -8,7 +8,10 @@
 
 int main(void)
 {
-	printf("Hello \n world!\n");
+	char *c = "Hello world\n";
+
+	while (*s)
+		putchar(*s++);
 
 	return (0);
 }
