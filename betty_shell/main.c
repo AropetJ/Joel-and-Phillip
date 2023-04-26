@@ -10,8 +10,8 @@ int main(void)
 {
 	char *c = "Hello world\n";
 
-	while (*s)
-		putchar(*s++);
+	while (*c)
+		putchar(*c++);
 
 	return (0);
 }
