@@ -1,8 +1,4 @@
-#include <stdio.h>
-#include <sys/stat.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include "main.h"
+#include "shell.h"
 
 /**
  * runprog - execute a program
