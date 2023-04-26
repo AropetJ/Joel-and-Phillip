@@ -19,7 +19,7 @@ int main(__attribute((unused)) int ac, char **av)
 	buf = malloc(sizeof(char) * 100);
 	wp = buf;
 
-	printf("$: ");
+	printf("#cisfun$ ");
 	while ((c = getchar()) != EOF)
 	{
 		if (c == '\n')
@@ -34,7 +34,7 @@ int main(__attribute((unused)) int ac, char **av)
 			free(buf);
 			buf = malloc(sizeof(char) * 100);
 			wp = buf;
-			printf("$: ");
+			printf("#cisfun$ ");
 		}
 		else
 		{
