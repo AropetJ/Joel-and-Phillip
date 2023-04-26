@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <sys/stat.h>
+#include <stdlib.h>
+#include <unistd.h>
 #include "main.h"
 
 /**
@@ -15,9 +17,6 @@ int runprog(char *path, char **arg)
 	pid_t child_pid;
 	int status;
 	char *envp[] = {NULL};
-	char *temp_path;
-
-	char *val;
 
 	struct stat bf;
 

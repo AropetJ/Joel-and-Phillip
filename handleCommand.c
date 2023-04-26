@@ -11,7 +11,7 @@
 int handleCommand(char *cmd)
 {
 	int status;
-	size_t i, j, word_count;
+	size_t j, word_count;
 	char **args;
 
 	args = _strtok(cmd, &word_count);

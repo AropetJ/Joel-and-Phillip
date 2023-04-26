@@ -7,7 +7,7 @@
  * Return: void
  */
 
-void main(void)
+int main(void)
 {
 	char c;
 	char *buf;
@@ -40,4 +40,5 @@ void main(void)
 			wp++;
 		}
 	}
+	return (0);
 }
