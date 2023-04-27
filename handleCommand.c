@@ -5,10 +5,10 @@
  * handleCommand - handles entered command
  * @cmd: entered command
  *
- * Return: 0 if success else -1
+ * Return: void
  */
 
-int handleCommand(char *cmd)
+void handleCommand(char *cmd)
 {
 	int status;
 
