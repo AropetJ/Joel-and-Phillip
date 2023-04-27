@@ -3,11 +3,13 @@
 
 /**
  * main- offers input prompt
+ * @ac: argument count
+ * @av: argument vector
  *
  * Return: void
  */
 
-int main(void)
+int main(__attribute((unused)) int ac, char **av)
 {
 	char c;
 	char *buf;
@@ -17,7 +19,7 @@ int main(void)
 	buf = malloc(sizeof(char) * 100);
 	wp = buf;
 
-	printf("$: ");
+	printf("#cisfun$ ");
 	while ((c = getchar()) != EOF)
 	{
 		if (c == '\n')
@@ -26,13 +28,13 @@ int main(void)
 			exec_status = handleCommand(buf);
 			if (exec_status == -1)
 			{
-				printf("%s: No such file or directory\n", buf);
+				printf("%s: No such file or directory\n", av[0]);
 			}
 
 			free(buf);
 			buf = malloc(sizeof(char) * 100);
 			wp = buf;
-			printf("$: ");
+			printf("#cisfun$ ");
 		}
 		else
 		{

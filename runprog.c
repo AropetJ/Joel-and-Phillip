@@ -7,16 +7,17 @@
 /**
  * runprog - execute a program
  * @path: process path
- * @arg: program arguments
  *
  * Return: 1 if success else 0
  */
 
-int runprog(char *path, char **arg)
+int runprog(char *path)
 {
 	pid_t child_pid;
 	int status;
 	char *envp[] = {NULL};
+	char *args[] = {NULL};
+
 
 	struct stat bf;
 
@@ -31,7 +32,7 @@ int runprog(char *path, char **arg)
 
 	if (child_pid == 0)
 	{
-		execve(path, arg, envp);
+		execve(path, args, envp);
 	}
 	else
 		wait(&status);
