@@ -12,21 +12,42 @@
 int main(__attribute((unused)) int ac, char **av)
 {
 	char *buf;
-	int exec_status, read;
+	int read, status;
 	size_t size;
+	pid_t child_pid;
+	char *args[] = {NULL, NULL};
 
 	size = 0;
-	printf("#cisfun$ ");
-	while ((read = getline(&buf, &size, stdin)) != -1)
+	while (1)
 	{
-		buf[read - 1] = '\0';
-		exec_status = handleCommand(buf);
-		if (exec_status == -1)
+		printf("#cisfun$ ");
+		read = getline(&buf, &size, stdin);
+		if (read == -1)
 		{
-			printf("%s: No such file or directory\n", av[0]);
+			free(buf);
+			exit(EXIT_FAILURE);
 		}
-		free(buf);
-		printf("#cisfun$: ");
+		buf[read - 1] = '\0';
+
+		args[0] = buf;
+		child_pid = fork();
+		if (child_pid < 0)
+		{
+			free(buf);
+			exit(EXIT_FAILURE);
+		}
+		if (child_pid == 0)
+		{
+			if (execve(args[0], args, NULL) == -1)
+			{
+				printf("%s: No such file or directory\n", av[0]);
+			}
+		}
+		else
+		{
+			wait(&status);
+		}
+
 	}
 	return (0);
 }
