@@ -15,9 +15,7 @@ int runprog(char *path)
 {
 	pid_t child_pid;
 	int status;
-	char *envp[] = {NULL};
 	char *args[] = {NULL};
-
 
 	struct stat bf;
 
@@ -32,7 +30,7 @@ int runprog(char *path)
 
 	if (child_pid == 0)
 	{
-		execve(path, args, envp);
+		execve(path, args, args);
 	}
 	else
 		wait(&status);
