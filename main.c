@@ -15,16 +15,16 @@ int main(__attribute((unused)) int ac, char **av)
 	size_t size;
 	int read;
 	int exec_status;
-	
-	size = 0;
 
+	size = 0;
 	while (1)
 	{
 		printf("#cisfun$ ");
-		if ((read = getline(&command, &size, stdin)) == -1)
+		read = getline(&command, &size, stdin)
+
+		if ((read == -1)
 			break;
-		
-		command[read-1] = '\0';
+		command[read - 1] = '\0';
 		exec_status = handleCommand(command);
 		if (exec_status == -1)
 			printf("%s: No such file or directory\n", av[0]);
