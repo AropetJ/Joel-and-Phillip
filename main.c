@@ -11,36 +11,22 @@
 
 int main(__attribute((unused)) int ac, char **av)
 {
-	char c;
 	char *buf;
-	char *wp;
-	int exec_status;
+	int exec_status, read;
+	size_t size;
 
-	buf = malloc(sizeof(char) * 100);
-	wp = buf;
-
+	size = 0;
 	printf("$: ");
-	while ((c = getchar()) != EOF)
+	while ((read = getline(&buf, &size, stdin)) != -1)
 	{
-		if (c == '\n')
+		buf[read - 1] = '\0';
+		exec_status = handleCommand(buf);
+		if (exec_status == -1)
 		{
-			wp = '\0';
-			exec_status = handleCommand(buf);
-			if (exec_status == -1)
-			{
-				printf("%s: No such file or directory\n", av[0]);
-			}
-
-			free(buf);
-			buf = malloc(sizeof(char) * 100);
-			wp = buf;
-			printf("$: ");
+			printf("%s: No such file or directory\n", av[0]);
 		}
-		else
-		{
-			*wp = c;
-			wp++;
-		}
+		free(buf);
+		printf("$: ");
 	}
 	return (0);
 }
