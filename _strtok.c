@@ -26,7 +26,7 @@ char **_strtok(char *command, size_t *count)
 	word = malloc(sizeof(char) * MAXWORDLENGTH);
 	for (i = 0, j = 0; (c = *(command + i)); i++)
 	{
-		if (c != ' ' && c != '\n' && c != '\0')
+		if (c != ' ' || c != '\n' || c != '\0')
 			*(word + j) = c;
 		else
 		{

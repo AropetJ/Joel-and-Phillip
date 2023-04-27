@@ -11,36 +11,24 @@
 
 int main(__attribute((unused)) int ac, char **av)
 {
-	char c;
-	char *buf;
-	char *wp;
+	char *command;
+	size_t size;
+	int read;
 	int exec_status;
+	
+	size = 0;
 
-	buf = malloc(sizeof(char) * 100);
-	wp = buf;
-
-	printf("#cisfun$ ");
-	while ((c = getchar()) != EOF)
+	while (1)
 	{
-		if (c == '\n')
-		{
-			wp = '\0';
-			exec_status = handleCommand(buf);
-			if (exec_status == -1)
-			{
-				printf("%s: No such file or directory\n", av[0]);
-			}
-
-			free(buf);
-			buf = malloc(sizeof(char) * 100);
-			wp = buf;
-			printf("#cisfun$ ");
-		}
-		else
-		{
-			*wp = c;
-			wp++;
-		}
+		printf("#cisfun$ ");
+		if ((read = getline(&command, &size, stdin)) == -1)
+			break;
+		
+		command[read-1] = '\0';
+		exec_status = handleCommand(command);
+		if (exec_status == -1)
+			printf("%s: No such file or directory\n", av[0]);
 	}
+
 	return (0);
 }
