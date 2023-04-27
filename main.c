@@ -20,7 +20,9 @@ int main(__attribute((unused)) int ac, char **av)
 	size = 0;
 	while (1)
 	{
-		printf("#cisfun$ ");
+		if (isatty(STDIN_FILENO))
+			printf("#cisfun$ ");
+
 		read = getline(&buf, &size, stdin);
 		if (read == -1)
 		{
