@@ -29,7 +29,7 @@ int main(__attribute((unused)) int ac, char **av)
 		}
 
 		buf[read - 1] = '\0';
-		handleCommand(buf);
+		handleCommand(buf, av[0]);
 	}
 	return (0);
 }
