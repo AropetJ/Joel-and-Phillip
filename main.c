@@ -16,7 +16,7 @@ int main(__attribute((unused)) int ac, char **av)
 	size_t size;
 
 	size = 0;
-	printf("$: ");
+	printf("#cisfun$ ");
 	while ((read = getline(&buf, &size, stdin)) != -1)
 	{
 		buf[read - 1] = '\0';
@@ -26,7 +26,7 @@ int main(__attribute((unused)) int ac, char **av)
 			printf("%s: No such file or directory\n", av[0]);
 		}
 		free(buf);
-		printf("$: ");
+		printf("#cisfun$: ");
 	}
 	return (0);
 }
