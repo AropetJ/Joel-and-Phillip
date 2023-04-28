@@ -1,6 +1,5 @@
-/*
- * _strcmp - compares two strings.
- * 
+/**
+ * _strcmp - function  compares the two strings str1 and str2.
  * @str1: first string
  * @str2: second strang
  *
