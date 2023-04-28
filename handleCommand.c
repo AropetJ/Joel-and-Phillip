@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+#include "shell.h"
+=======
 #include "main.h"
+>>>>>>> c54db66c8ac4a74de9bf819d98348ae36b6f24cb
 
 /**
  * handleCommand - handles entered command
