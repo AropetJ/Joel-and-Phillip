@@ -18,6 +18,9 @@ int main(__attribute((unused)) int ac, char **av)
 	size = 0;
 	while (1)
 	{
+		if (isatty(STDIN_FILENO))
+			printf("$ ");
+
 		read = getline(&buf, &size, stdin);
 		if (read == -1)
 		{
