@@ -11,11 +11,11 @@
 #include <time.h>
 #include <signal.h>
 #include <stdbool.h>
+#include <string.h>
 
 int _putchar(char c);
-int handleCommand(char *cmd);
 char **_strtok(char *command, size_t *count);
-void handle_signal(int signal);
-int runprog(char *path);
+void handleCommand(char *cmd);
+void runprog(char *path, char **args);
 
 #endif

@@ -1,31 +1,34 @@
 #include "shell.h"
 
-int main(int argc, char **argv, char **env)
+/**
+ * main- offers input prompt
+ * @ac: argument count
+ * @av: argument vector
+ *
+ * Return: void
+ */
+
+int main(__attribute__((unused))int argc, __attribute__((unused))char **argv, __attribute__((unused))char **env)
 {
 	char *buf = NULL;
 	char *sh = "#cisfun$ ";
 	ssize_t prompt;
 	size_t n = 0;
-	bool piped = true;
+	/* char *args; */
+	bool piped = false;
 	int term;
 	int pid;
-	struct stat st;
-	int wstatus;
+	/* struct stat st;*/
+	int status;
 
 	/* enter into the loop that will continously print the prompt */
-	while (1 && piped)
+	while (1 && !piped)
 		{
 			/* check whether input is coming from a pipe */
 			term = isatty(STDIN_FILENO);
-			if (term == 1)
+			if (term == 0)
 			{
 				piped = true;
-			}
-			else if (term == 0)
-			{
-				piped = false;
-				perror("ERROR: No input from stdin");
-				exit(EXIT_FAILURE);
 			}
 
 			/* print the first prompt to the terminal */
@@ -42,26 +45,22 @@ int main(int argc, char **argv, char **env)
 				exit(EXIT_FAILURE);
 			}
 			/* if the buffer ends with a newline character, replace it with a null terminated character */
-			if (buf[prompt - 1] = '\n')
-				buf[prompt - 1] = '\0';
+			if ((buf[prompt - 1] = '\n'))
+				(buf[prompt - 1]) = '\0';
 
 			/* create a child process that we shall use for execution of our program */
 			pid = fork();
 			
-			/* Handle the error case */
-			if (pid == -1)
-			{
-				perror("ERROR: Failed to fork parent process");
-				exit(EXIT_FAILURE);
-			}
 			/* execute the program */
-			else if (pid == 0)
+			if (pid == 0)
 			{
-				runprog(buf, &st, env);
+				handleCommand(buf);
 			}
+			else
+				wait(&status);
 			
 			/* Make sure the parent process waits for the child */
-			if (waitpid(pid, &wstatus, 0) == -1)
+			if (pid < 0)
 			{
 				perror("ERROR:Parent completed execution before the child process");
 				exit(EXIT_FAILURE);
