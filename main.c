@@ -14,7 +14,6 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 	char *sh = "#cisfun$ ";
 	ssize_t prompt;
 	size_t n = 0;
-	/* char *args; */
 	int term;
 
 	while (1)
