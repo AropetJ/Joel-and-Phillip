@@ -17,5 +17,6 @@ int _putchar(char c);
 char **_strtok(char *command, size_t *count);
 void handleCommand(char *cmd);
 void runprog(char *path, char **args);
+int _strcmp(char *str1, char *str2);
 
 #endif
