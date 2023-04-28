@@ -4,13 +4,27 @@
  * runprog - execute a program
  * @path: process path
  * @args: command args
- * @prompter: prompt name
  *
  * Return: void
  */
 
 void runprog(char *path, char **args)
 {
-	if (execve(path, args, NULL) == -1)
-		write(1,"./shell: No such file or directory\n", 35);
+	int status;
+	int pid;
+
+	pid = fork();
+	if (pid == 0)
+	{
+		if (execve(path, args, NULL) == -1)
+			write(1, "./shell: No such file or directory\n", 35);
+	}
+
+	if (pid < 0)
+	{
+		perror("ERROR:Parent completed execution before the child     process");
+		exit(EXIT_FAILURE);
+	}
+	else
+		wait(&status);
 }

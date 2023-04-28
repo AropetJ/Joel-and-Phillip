@@ -3,7 +3,6 @@
 /**
  * handleCommand - handles entered command
  * @cmd: entered command
- * @prompter: prompt name
  *
  * Return: void
  */
