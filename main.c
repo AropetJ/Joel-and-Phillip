@@ -32,6 +32,9 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 		if ((buf[prompt - 1] == '\n'))
 			(buf[prompt - 1]) = '\0';
 
+		if (_strcmp(buf, "exit") == 0)
+			break;
+
 		handleCommand(buf);
 	}
 	free(buf);
