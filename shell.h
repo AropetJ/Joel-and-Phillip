@@ -10,6 +10,7 @@
 #include <sys/wait.h>
 #include <time.h>
 #include <signal.h>
+#include <stdbool.h>
 
 int _putchar(char c);
 int handleCommand(char *cmd);
