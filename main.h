@@ -10,5 +10,6 @@
 void handleCommand(char *cmd, char *prompter);
 char **_strtok(char *command, size_t *count);
 void runprog(char *path, char **args, char *prompter);
+int _getline(char *buf, size_t *size, FILE *stream);
 
 #endif
