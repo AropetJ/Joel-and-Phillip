@@ -51,8 +51,7 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv, ch
 				env++;
 			}
 		}
-		continue;
-		if (_strcmp(buf, "exit") == 0)
+		else if (_strcmp(buf, "exit") == 0)
 		{
 			break;
 		}

@@ -9,16 +9,10 @@
 
 int _strcmp(char *str1, char *str2)
 {
-	if (*str2 && *str1)
+	while (*str1 && (*str1 == *str2))
 	{
-		if (*str1 != *str2)
-			return (*str1 - *str2);
 		str1++;
 		str2++;
 	}
-	else if (*str1 == *str2)
-		return (0);
-	else
-		return (*str1 < *str2 ? -1 : 1);
-	return (0);
+	return (*str1 - *str2);
 }
