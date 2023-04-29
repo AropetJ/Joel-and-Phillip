@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "main.h"
 
 /**
@@ -25,7 +24,7 @@ int main(__attribute((unused)) int ac, char **av)
 		if (read == -1)
 		{
 			free(buf);
-			exit(EXIT_FAILURE);
+			_exits(EXIT_FAILURE);
 		}
 
 		buf[read - 1] = '\0';

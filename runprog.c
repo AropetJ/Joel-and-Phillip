@@ -11,16 +11,17 @@
 
 void runprog(char *path, char **args, char *prompter)
 {
+	extern char **environ;
 	pid_t child_pid;
 	int status;
 
 	child_pid = fork();
 	if (child_pid < 0)
-		exit(EXIT_FAILURE);
+		_exits(EXIT_FAILURE);
 
 	if (child_pid == 0)
 	{
-		if (execve(path, args, NULL) == -1)
+		if (execve(path, args, environ) == -1)
 			printf("%s: No such file or directory\n", prompter);
 	}
 	else
